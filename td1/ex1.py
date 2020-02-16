@@ -14,4 +14,4 @@ nom = input("nom? ")
 age = int(input("âge? "))
 print(f"Vous êtes: {nom} et vous avez {age} ans.")
 
-print("la fonction raw_input n'existe pas dans python3")
+print("\nLa fonction raw_input n'existe pas dans python3")
