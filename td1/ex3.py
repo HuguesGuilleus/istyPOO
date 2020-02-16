@@ -5,11 +5,10 @@
 couleur = {
 	"r": "Rouge",
 	"v": "Vert",
-	"b": "bleu",  # je ne sais pas pourquoi le bleu est en minuscule
+	"b": "bleu", # Je ne sais pas pourquoi le bleu est en minuscule.
 }
 
 inp = input("[rvb]: ").lower()
-
 if inp in couleur:
 	print(couleur[inp])
 else:
