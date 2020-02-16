@@ -8,7 +8,7 @@ import re
 nb=-1
 while nb < 0:
 	inp = input("nb (entier positif): ")
-	if re.match("\D",inp) != None: continue
+	if re.match("\D", inp) != None: continue
 	nb = int(inp)
 
 
@@ -19,7 +19,8 @@ print(f"  {nb} contient {l} digit")
 
 
 # Méthode on divise par 10 tant que l'entier n'est pas null et on renvoie
-# le nombre d'itération.
+# le nombre d'itération. Cette méthode à l'interêt de pouvoir très facilement
+# s'adapter à d'autres bases que la base décimale.
 print("\nAlgo2: Division par 10")
 n=nb
 l=0
