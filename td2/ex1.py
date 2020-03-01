@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 # GUILLEUS Hugues IATIC3 <hugues.guilleus@ens.uvsq.fr>
 
+import math
+
 # Iterre sur le nombre de question
 questionNum=0
 def question(name=""):
@@ -52,7 +54,6 @@ def uniqNotSorted(tab):
 		while j < len(tab[:i]):
 			w = tab[j]
 			if w == v and type(v) == type(w):
-				print(f"on vire le doublon {v}")
 				tab.pop(i)
 				i -= 1 # pour ne pas ittérer le i
 				break
@@ -72,3 +73,92 @@ def applattissment(src):
 	return list
 
 print(applattissment([[1,2],[3,4]]))
+
+
+question("Valeurs consécutives")
+def valConsecutives(list):
+	if len(list) == 0:
+		return []
+	out = []
+	before = list[0]
+	for e in list[1:]:
+		if before+1 == e:
+			out.append((before, e))
+		before = e
+	return out
+print(valConsecutives([3, 8, 9, 10, 15, 16]))
+
+
+question("?")
+def q4(d):
+	c = 0
+	number = type(0)
+	for v in applattissment(d.values()):
+			if type(v) == number:
+				c += 1
+	return c
+
+print(q4({
+	"a": [1, True, 5],
+	"b": [False, 19, 8585],
+}))
+
+
+question("Des")
+table = {}
+for des1 in range(1,6):
+	for des2 in range(1,6):
+		table[des1+des2] = (des1, des2)
+print(f"table: {table}")
+
+
+question("Crible d'Eratosthène")
+def nbFirst(n):
+	if type(n) != type(0) and n < 2:
+		raise "pas un nombre"
+	max = int(math.sqrt(n))+1
+	first = list(range(2, max))
+	for i in first:
+		if n%i != 0:
+			for s in range(i, max+1, i):
+				if s in first: first.remove(s)
+		else:
+			for s in range(i*2, max+1, i):
+				if s in first: first.remove(s)
+	return first
+print(nbFirst(60))
+
+
+question("Inversion")
+def inversion(table):
+	for i, v in table.copy().items():
+		table.pop(i)
+		table[v] = i
+	return
+
+t = {
+	'a': True,
+	'b': False,
+}
+inversion(t)
+print(t)
+
+
+question("Même lettres")
+def sameLetter(word1, word2):
+	for c in word1:
+		if c not in word2:
+			return False
+	for c in word2:
+		if c not in word1:
+			return False
+	return True
+print(f'sameLetter("chinnnnne", "chien"): {sameLetter("chinnnnne", "chien")}')
+
+def anagramme(word1, word2):
+	l1 = list(word1)
+	l2 = list(word2)
+	l1.sort()
+	l2.sort()
+	return l1 == l2
+print(f'sameLetter("chine", "chien"): {anagramme("chine", "chien")}')
